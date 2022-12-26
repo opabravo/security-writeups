@@ -2,7 +2,7 @@
 
 Some security research during the internship at GSS corp.
 
-And some writeups of Hack The Box CTFs in my spare time.
+Plus some writeups of Hack The Box CTFs in my spare time.
 
 ## GSS Internship
 
@@ -13,4 +13,4 @@ And some writeups of Hack The Box CTFs in my spare time.
 
 ## Hack The Box
 
-- [Soccer](./HackTheBox-Wrietup-Soccer.pdf)
+- [Soccer](./HackTheBox-Writeup-Soccer.pdf)
