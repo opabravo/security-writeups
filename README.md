@@ -9,7 +9,11 @@ Plus some writeups of Hack The Box CTFs in my spare time.
 - [DVWA (Damn Vulnerable Web Application)](./DVWA.md)
 - [Metasploit Practice](./metasploit.md)
 - [WebAp Penetration Testing](./WebAp-PT.md)
-- [Zimbra CTF 說明](./Zimbra-CTF-Intro.pdf) | [Zimbra CVE Reproduce](./Zimbra.pdf)
+- Zimbra
+  - [How To Setup Zimbra CTF](https://medium.com/@opabravo/frist-time-deploying-a-ctf-challenge-c13871d45970)
+  - [Zimbra CTF Writeup : Sneaky Way (Manually)](https://medium.com/@opabravo/zimbra-ctf-writeup-manually-6afe91be52a0)
+  - [Zimbra CTF 說明](./Zimbra-CTF-Intro.pdf)
+  - [Zimbra CVE Reproduce](./Zimbra.pdf)
 
 ## Hack The Box
 ### Password
