@@ -12,5 +12,12 @@ Plus some writeups of Hack The Box CTFs in my spare time.
 - [Zimbra CTF 說明](./Zimbra-CTF-Intro.pdf) | [Zimbra CVE Reproduce](./Zimbra.pdf)
 
 ## Hack The Box
+### Password
+
+Password is the flag you got!
+Example: `HTB{flag}`
+
+### Writeups
 
 - [Soccer](./HackTheBox-Writeup-Soccer.pdf)
+- [A Nightmare On Math Street](./htb/A-Nightmare-On-Math-Street.pdf)
