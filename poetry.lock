@@ -1,0 +1,25 @@
+[[package]]
+name = "pypdf"
+version = "3.2.1"
+description = "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+crypto = ["PyCryptodome"]
+dev = ["black", "flit", "pip-tools", "pre-commit (<2.18.0)", "pytest-cov", "wheel"]
+docs = ["myst_parser", "sphinx", "sphinx_rtd_theme"]
+full = ["Pillow", "PyCryptodome"]
+image = ["Pillow"]
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.11"
+content-hash = "77d7dae5c653795302acaa3d9b6eaab704740301c0525611a33abb09d3eb4ade"
+
+[metadata.files]
+pypdf = [
+    {file = "pypdf-3.2.1-py3-none-any.whl", hash = "sha256:beb4022d95caec5f32acd935e4de05b0b36cc95a5d06477f84d6ec0b337288b0"},
+    {file = "pypdf-3.2.1.tar.gz", hash = "sha256:ac6bcd4492b55c95f58f7e3a6e8e113588244bdfb21c8ee60da6db399725b8dd"},
+]

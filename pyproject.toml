@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "security-writeups"
+version = "0.1.0"
+description = ""
+authors = ["FateWalker <21262207+opabravo@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "security_writeups"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pypdf = "^3.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
