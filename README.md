@@ -28,16 +28,18 @@ I am doing a self-challenge:
 
 ### Password
 
-PDFs' password is the flag(root) from the machine/challenge!
+Active machine writeups/walkthroughs are encrypted with passwords, due to Hack The Box's rules.
+
+Password is the flag(root) from the machine/challenge!
 
 - Example: `HTB{flag}`
 
 ### Machine Writeup/Walkthrough
 
-- [Soccer](./htb/Soccer.pdf)
-- [UpDown](./htb/UpDown.pdf)
-- [Photobomb](./htb/Photobomb.pdf)
+- [Soccer](./htb/Machines/Soccer.pdf)
+- [UpDown](./htb/Machines/UpDown.pdf)
+- [Photobomb](./htb/Machines/Photobomb.pdf)
 
 ### Challenges Writeup/Walkthrough
 
-- [A Nightmare On Math Street](./htb/A-Nightmare-On-Math-Street.pdf)
+- [A Nightmare On Math Street](./htb/Challenges/A-Nightmare-On-Math-Street.pdf)
