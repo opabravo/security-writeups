@@ -37,7 +37,7 @@ Password is the flag(root) from the machine/challenge!
 ### Machine Writeup/Walkthrough
 
 - [Soccer](./htb/Machines/Soccer.pdf)
-- [UpDown](./htb/Machines/UpDown.pdf)
+- [UpDown](./htb/Machines/Updown.pdf)
 - [Photobomb](./htb/Machines/Photobomb.pdf)
 
 ### Challenges Writeup/Walkthrough
