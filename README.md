@@ -19,12 +19,12 @@ Plus some writeups of Hack The Box CTFs in my spare time.
 
 Hack The Box is an online platform allowing you to test your penetration testing skills and exchange ideas and methodologies with other members of similar interests.
 
-### Descritpion
+### Goal
 
 I am doing a self-challenge:
 
 - 2 Machines a week
-- 5 challenges a week
+- 3 challenges a week
 
 ### Password
 
