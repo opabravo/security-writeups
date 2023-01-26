@@ -4,6 +4,16 @@ Some security research during the internship at GSS corp.
 
 Plus some writeups of Hack The Box CTFs in my spare time.
 
+And a script to renew tryhackme machine automatically.
+
+## Table of Contents
+
+Topics | Description
+--- | ---
+[GSS Internship](#gss-internship) | Some security research during the internship at GSS corp.
+[Hack The Box](#hack-the-box) | Hack The Box machine and challnge writeups/walkthroughs.
+[Try Hack Me](#try-hack-me) | Try Hack Me related notes and scripts.
+
 ## GSS Internship
 
 - [DVWA (Damn Vulnerable Web Application)](./gss/DVWA.md)
