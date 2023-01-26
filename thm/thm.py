@@ -117,8 +117,16 @@ class MachineManager(Machine):
     def get_stats(self):
         """Constantly check if machine IP is available after deploy"""
         while True:
+            # Check if machine stats was fetched
+            if not self.machine_stats:
+                self.update_stats()
+                time.sleep(5)
+                continue
+
+            #Check if machine's private IP is available
             if self.machine_stats.get('internalIP'):
                 return self.parse_stats()
+
             print("---\n[*] Getting machine IP...")
             self.update_stats()
             time_to_wait = self.machine_stats.get('waitTime')
