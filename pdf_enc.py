@@ -54,6 +54,7 @@ if __name__ == "__main__":
     # Loop over each PDF file
     for pdf_file in get_pdf_files("htb-unencrypted"):
         output_pdf_path = get_pdf_output_path(pdf_file)
+        # Check if the PDF file has already been encrypted
         if output_pdf_path.exists():
             print(f"[!] {output_pdf_path} already exists. Skipping...")
             continue
