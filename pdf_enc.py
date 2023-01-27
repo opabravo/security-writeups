@@ -47,7 +47,6 @@ def encrypt_pdf(pdf_file: str, output_path: str):
     # Save the new PDF to a file
     with open(output_path, "wb") as f:
         writer.write(f)
-    print(f"[+] Encrypted PDF saved to {output_path}\n")
 
 
 if __name__ == "__main__":
@@ -58,6 +57,7 @@ if __name__ == "__main__":
         if output_pdf_path.exists():
             print(f"[!] {output_pdf_path} already exists. Skipping...")
             continue
-        encrypt_pdf(pdf_file)
+        encrypt_pdf(pdf_file, output_pdf_path)
+        print(f"[+] Encrypted PDF saved to {output_pdf_path}\n")
 
     input("Press any key to exit...")
