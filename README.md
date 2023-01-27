@@ -49,6 +49,7 @@ Password is the flag(root) from the machine/challenge!
 - [Soccer](./htb/Machines/Soccer.pdf)
 - [UpDown](./htb/Machines/Updown.pdf)
 - [Photobomb](./htb/Machines/Photobomb.pdf)
+- [Ambassador](./htb/Machines/Ambassador.pdf)
 - [Shoppy](./htb/Machines/Shoppy.pdf)
 
 ### Challenges Writeup/Walkthrough
