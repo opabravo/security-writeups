@@ -129,9 +129,9 @@ class MachineManager(Machine):
 
             print("---\n[*] Getting machine IP...")
             self.update_stats()
-            time_to_wait = self.machine_stats.get('waitTime')
-            print(f"[*] Waiting for {time_to_wait} seconds...")
-            time.sleep(time_to_wait)
+            if time_to_wait := self.machine_stats.get('waitTime'):
+                print(f"[*] Waiting for {time_to_wait} seconds...")
+                time.sleep(time_to_wait)
         
 
     def restart(self):
