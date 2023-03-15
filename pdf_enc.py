@@ -1,86 +1,71 @@
 """
-This script will find flag from all PDF files and encrypt PDFs.
+Quick script to encrypt a PDF file.
 """
-from pypdf import PdfReader, PdfWriter, PageObject
+from pypdf import PdfWriter, PdfReader
 from pathlib import Path
+from dotenv import load_dotenv
+from collections.abc import Iterable
 import glob
+import sys, os
 import re
+import requests
 
 
+load_dotenv()
 BASE_PATH = Path(__file__).parent.resolve()
 OUTPUT_MACHINE_PATH = BASE_PATH / "htb" / "Machines"
 OUTPUT_CHALLENGE_PATH = BASE_PATH / "htb" / "Challenges"
 
-def get_pdf_files(pdf_dir: str) -> GeneratorExit:
-    """Get a list of all PDF files in the directory"""
-    # Get a list of all PDF files in the current directory
-    source_pdf_path = Path.cwd() / pdf_dir
-    yield from glob.glob(f"{source_pdf_path}/*.pdf")
+
+def fetch_active_machines(token: str) -> list:
+    """
+    Fetch active machines from HTB API
+    """
+    url = "https://www.hackthebox.com/api/v4/machine/list"
+    headers = {"Authorization": f"Bearer {token}",
+               "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"}
+    response = requests.get(url, headers=headers)
+    result = response.json()
+    return result["info"]
 
 
-def get_flag_from_page(page: PageObject) -> list:
-    """Extract the root flag from the PDF file"""
-    text = page.extract_text()
-    return re.findall(r"([a-fA-F0-9]{32})", text)
+def get_pdf_files(path: Path) -> Iterable[Path]:
+    """Get a list of PDF files in the directory"""
+    for f in path.iterdir():
+        if f.is_file() and f.suffix == ".pdf":
+            yield f
 
 
-def get_machine_output_path(pdf_file: str) -> Path:
-    """Rename the original machine PDF file to the machine name only"""
-    original_name = Path(pdf_file).name
-    output_name = original_name.split("-")[1].strip()
-    return OUTPUT_MACHINE_PATH / output_name
-
-
-def encrypt_pdf(pdf_file: str, output_path: str):
-    reader = PdfReader(pdf_file)
+def encrypt_pdf(pdf_file_path: Path, password: str):
+    reader = PdfReader(pdf_file_path)
+    if reader.is_encrypted:
+        print(f"[*] {pdf_file_path} is already encrypted. Skipping ...")
+        return
     writer = PdfWriter()
 
+    print(f"[*] Encrypting {pdf_file} ... | {password}")
     # Loop over each page in the PDF file
     for page in reader.pages:
-        if flags := get_flag_from_page(page):
-            flag = flags[0]
-        # print(f"[*] Found flag: {flag}")
         writer.add_page(page)
 
     # Encrypt the PDF file
-    print(f"[*] Encrypting {pdf_file} ... | {flag}")
-    writer.encrypt(flag)
+    print(f"[*] Encrypting {pdf_file_path} ... | {password}")
+    writer.encrypt(password)
 
     # Save the new PDF to a file
-    with open(output_path, "wb") as f:
+    with open(pdf_file_path, "wb") as f:
         writer.write(f)
 
-def encrypt_machines():
-    """Encrypt machines PDFs under htb-unencrypted directory"""
-    print("---\n[*] Encrypting machines PDFs...\n---")
-    # Loop over each PDF file
-    dir_path = BASE_PATH / "htb-unencrypted" / "Machines"
-    for pdf_file in get_pdf_files(dir_path):
-        output_pdf_path = get_machine_output_path(pdf_file)
-        # Check if the output PDF file already exists
-        if output_pdf_path.exists():
-            print(f"[!] {output_pdf_path} already exists. Skipping...")
-            continue
 
-        encrypt_pdf(pdf_file, output_pdf_path)
-        print(f"[+] Encrypted PDF saved to {output_pdf_path}\n")
+if __name__ == '__main__':
+    token = os.getenv("HTB_TOKEN")
+    password = os.getenv("PDF_PASSWORD")
+    active_machines = [m["name"] for m in fetch_active_machines(token)]
+    pdf_to_encrypt = [f for f in get_pdf_files(OUTPUT_MACHINE_PATH) if f.name.split(".")[0] in active_machines]
 
-def encrypt_challenges():
-    """Encrypt challenges PDFs under challenges-unencrypted directory"""
-    print("---\n[*] Encrypting challenges PDFs...\n---")
-    dir_path = BASE_PATH / "htb-unencrypted" / "Challenges"
-    # Loop over each PDF file
-    for pdf_file in get_pdf_files(dir_path):
-        output_pdf_path = OUTPUT_CHALLENGE_PATH / Path(pdf_file).name
-        # Check if the output PDF file already exists
-        if output_pdf_path.exists():
-            print(f"[!] {output_pdf_path} already exists. Skipping...")
-            continue
+    print(f"[*] Active machines: {active_machines}")
+    print(f"[*] PDF files to encrypt: {pdf_to_encrypt}")
+    for pdf_file in pdf_to_encrypt:
+        encrypt_pdf(pdf_file, password)
+    print("---\n[*] Done!\n---")
 
-        encrypt_pdf(pdf_file, output_pdf_path)
-        print(f"[+] Encrypted PDF saved to {output_pdf_path}\n")
-
-
-if __name__ == "__main__":
-    encrypt_machines()
-    input("Press any key to exit...")
