@@ -12,6 +12,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.idea/
 
 # Self define
 htb-unencrypted/
