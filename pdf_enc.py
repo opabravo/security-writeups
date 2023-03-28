@@ -43,7 +43,6 @@ def encrypt_pdf(pdf_file_path: Path, password: str):
         return
     writer = PdfWriter()
 
-    print(f"[*] Encrypting {pdf_file} ... | {password}")
     # Loop over each page in the PDF file
     for page in reader.pages:
         writer.add_page(page)
