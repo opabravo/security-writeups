@@ -1,14 +1,13 @@
 """
-Quick script to encrypt a PDF file.
+A script to automatically encrypt and decrypt hack the box PDF writeups based on machine/challenge active/retired status.
 """
+import os, contextlib
+import requests
 from pypdf import PdfWriter, PdfReader
 from pathlib import Path
 from dotenv import load_dotenv
 from collections.abc import Iterable
-import glob
-import sys, os
-import re
-import requests
+
 
 
 load_dotenv()
@@ -36,11 +35,11 @@ def get_pdf_files(path: Path) -> Iterable[Path]:
             yield f
 
 
-def encrypt_pdf(pdf_file_path: Path, password: str):
+def encrypt_pdf(pdf_file_path: Path, password: str) -> bool:
     reader = PdfReader(pdf_file_path)
     if reader.is_encrypted:
         print(f"[*] {pdf_file_path} is already encrypted. Skipping ...")
-        return
+        return False
     writer = PdfWriter()
 
     # Loop over each page in the PDF file
@@ -48,23 +47,59 @@ def encrypt_pdf(pdf_file_path: Path, password: str):
         writer.add_page(page)
 
     # Encrypt the PDF file
-    print(f"[*] Encrypting {pdf_file_path} ... | {password}")
     writer.encrypt(password)
 
     # Save the new PDF to a file
     with open(pdf_file_path, "wb") as f:
         writer.write(f)
+        
+    print(f"[+] Done encrypting | {pdf_file_path}")
+    return True
+        
 
-
-if __name__ == '__main__':
+def decrypt_pdf(pdf_file_path : Path, password: str) -> bool:
+    """Decrypt a PDF file if it is encrypted"""
+    reader = PdfReader(pdf_file_path)
+    if not reader.is_encrypted:
+        return False
+    
+    reader.decrypt(password)
+    writer = PdfWriter()
+    
+    for page in reader.pages:
+        writer.add_page(page)
+        
+    with open(pdf_file_path, "wb") as f:
+        writer.write(f)
+        
+    print(f"[+] Done decrypting | {pdf_file_path}")
+    return True
+        
+def main():
+    """Main entry point to decrypt or encrypt PDF files"""
     token = os.getenv("HTB_TOKEN")
     password = os.getenv("PDF_PASSWORD")
-    active_machines = [m["name"] for m in fetch_active_machines(token)]
-    pdf_to_encrypt = [f for f in get_pdf_files(OUTPUT_MACHINE_PATH) if f.name.split(".")[0] in active_machines]
+    active_machines = [m["name"].lower() for m in fetch_active_machines(token)]
+    machine_files = get_pdf_files(OUTPUT_MACHINE_PATH)
+    pdf_to_encrypt = [f for f in machine_files if f.name.split(".")[0].lower() in active_machines]
+    pdf_to_decrypt = [f for f in machine_files if f not in pdf_to_encrypt]
 
     print(f"[*] Active machines: {active_machines}")
     print(f"[*] PDF files to encrypt: {pdf_to_encrypt}")
+    
     for pdf_file in pdf_to_encrypt:
+        print(f"[*] Encrypting {pdf_file} ... | {password}")
         encrypt_pdf(pdf_file, password)
+        
+    for pdf_file in pdf_to_decrypt:
+        print(f"[*] Decrypting {pdf_file} ... | {password}")
+        decrypt_pdf(pdf_file, password)
+        
     print("---\n[*] Done!\n---")
+
+
+if __name__ == '__main__':
+    with contextlib.suppress(KeyboardInterrupt):
+        main()
+    input("Press any key to exit ...")
 
