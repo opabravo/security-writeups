@@ -42,14 +42,11 @@ def encrypt_pdf(pdf_file_path: Path, password: str) -> bool:
         return False
     writer = PdfWriter()
 
-    # Loop over each page in the PDF file
     for page in reader.pages:
         writer.add_page(page)
 
-    # Encrypt the PDF file
     writer.encrypt(password)
 
-    # Save the new PDF to a file
     with open(pdf_file_path, "wb") as f:
         writer.write(f)
         
@@ -77,10 +74,12 @@ def decrypt_pdf(pdf_file_path : Path, password: str) -> bool:
         
 def main():
     """Main entry point to decrypt or encrypt PDF files"""
-    token = os.getenv("HTB_TOKEN")
-    password = os.getenv("PDF_PASSWORD")
-    active_machines = [m["name"].lower() for m in fetch_active_machines(token)]
+    TOKEN = os.getenv("HTB_TOKEN")
+    PASSWORD = os.getenv("PDF_PASSWORD")
+    
+    active_machines = [m["name"].lower() for m in fetch_active_machines(TOKEN)]
     machine_files = get_pdf_files(OUTPUT_MACHINE_PATH)
+    
     pdf_to_encrypt = [f for f in machine_files if f.name.split(".")[0].lower() in active_machines]
     pdf_to_decrypt = [f for f in machine_files if f not in pdf_to_encrypt]
 
@@ -88,12 +87,12 @@ def main():
     print(f"[*] PDF files to encrypt: {pdf_to_encrypt}")
     
     for pdf_file in pdf_to_encrypt:
-        print(f"[*] Encrypting {pdf_file} ... | {password}")
-        encrypt_pdf(pdf_file, password)
+        print(f"[*] Encrypting {pdf_file} ... | {PASSWORD}")
+        encrypt_pdf(pdf_file, PASSWORD)
         
     for pdf_file in pdf_to_decrypt:
-        print(f"[*] Decrypting {pdf_file} ... | {password}")
-        decrypt_pdf(pdf_file, password)
+        print(f"[*] Decrypting {pdf_file} ... | {PASSWORD}")
+        decrypt_pdf(pdf_file, PASSWORD)
         
     print("---\n[*] Done!\n---")
 
