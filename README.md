@@ -44,13 +44,7 @@ Heard that the password might be in `$(cewl https://greybot.me)` though.
 
 ### Machine Writeup/Walkthrough
 
-- [Soccer](./htb/Machines/Soccer.pdf)
-- [Precious](./htb/Machines/Precious.pdf)
-- [UpDown](./htb/Machines/Updown.pdf)
-- [Photobomb](./htb/Machines/Photobomb.pdf)
-- [Ambassador](./htb/Machines/Ambassador.pdf)
-- [Shoppy](./htb/Machines/Shoppy.pdf)
-- [Squashed](./htb/Machines/Squashed.pdf)
+> [Machines](./htb/Machines)
 
 ### Challenges Writeup/Walkthrough
 
