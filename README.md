@@ -58,20 +58,16 @@ TryHackMe is an online platform to learn and practice ethical hacking.
 
 > [thm.py](./thm/thm.py)
 
-This script will renew tryhackme's attacker machine automatically,
-
-then generate an one line ssh command to let you connect to the machine quickly.
-
-Consider adding `-D 1080` to open socks5 proxy for burp suite or proxychains to access labs, very useful!
+This script will renew tryhackme's attacker machine automatically, then generate an one line ssh command to let users connect to the machine quickly.
 
 #### Demo
 
-> `thm.py`
+```bash
+cd thm
+pip3 install -r requirements.txt
+python3 thm.py
+```
 
 ![THM Script](./img/thm_script.png)
 
-#### SSH Command with Dynamic Port Forwarding
-
-```bash
-sshpass -p 319175dd4bf50537 ssh root@52.30.170.133 -o "StrictHostKeyChecking no" -D 1080
-```
+- `-D 1080` will open socks5 proxy for burp suite or proxychains to access labs, very useful!

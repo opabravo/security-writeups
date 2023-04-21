@@ -95,7 +95,7 @@ class Machine:
         Expire In(Minute) | {int(machine_stats.get('timeInSeconds')) // 60}
         IP:               | {ip}
         Credentials:      | {":".join(creds.values())}
-        SSH Command:      | sshpass -p {creds.get("password")} ssh {creds.get("username")}@{ip} -o "StrictHostKeyChecking no" 
+        SSH Command:      | sshpass -p {creds.get("password")} ssh {creds.get("username")}@{ip} -o "StrictHostKeyChecking no" -D 1080 
         --------------------------------------------
         """
 
