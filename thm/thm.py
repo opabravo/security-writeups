@@ -9,6 +9,7 @@ Main functions are:
 import requests
 import time
 import random
+import browser_cookie3
 from pathlib import Path
 
 
@@ -188,8 +189,18 @@ class MachineManager(Machine):
         return True, "[*] Machine is running"
 
 
-def load_session_id() -> str:
+def get_session_id(renew: bool=False) -> str:
     """Load session id from file"""
+    file_name = 'sid.txt'
+    if not Path(file_name).exists() or renew:
+        print("[*] Getting new session id from browser cookies...")
+        sid = get_sid_from_cookies()
+        if not sid:
+            print("[!] Failed to get session id from browser cookies")
+            sid = input("Please enter tryhackme's sid in cookie: ")
+        save_session_id(sid)
+        return sid
+    
     with open('sid.txt', 'r') as f:
         return f.read().strip()
 
@@ -200,32 +211,28 @@ def save_session_id(session_id: str):
         f.write(session_id.strip())
 
 
-def get_session_id(override: bool = False):
-    """Get session id from user input or file"""
-    if not Path('sid.txt').exists() or override:
-        session_id = input("Enter session id: ")
-        save_session_id(session_id)
-        return session_id
-    return load_session_id()
+def get_sid_from_cookies() -> str:
+    """Get session id from local browser cookies"""
+    cj = browser_cookie3.load()
+    for cookie in cj:
+        if cookie.domain == 'tryhackme.com' and cookie.name == 'connect.sid':
+            return cookie.value
 
 
 def main():
     """Main function"""
-    session_id = load_session_id()
+    session_id = get_session_id()
     machine = MachineManager(sid=session_id)
 
     while 1:
         result, msg = machine.remain()
         print(msg)
+        
         # If machine renew failed
-        if not result:
-            # If session id is invalid, get a new one
-            if msg == "[!] Invalid cookie":
-                print(f"***\n{machine.session.cookies}\n***\n")
-                session_id = get_session_id(override=True)
-                machine.session_id = session_id
-                continue
-            break
+        if not result and msg == "[!] Invalid cookie":
+            session_id = get_session_id(renew=True)
+            machine.session_id = session_id
+            continue
 
         print(machine.get_stats())
         sleep_for = random.randint(60, 300)
