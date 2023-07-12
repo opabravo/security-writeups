@@ -60,7 +60,7 @@ TryHackMe is an online platform to learn and practice ethical hacking.
 
 ### Script
 
-> [thm.py](./thm/thm.py)
+> [thm.py](./thm/machine-auto-renew/thm.py)
 
 This script will renew tryhackme's attacker machine automatically, then generate an one line ssh command to let users connect to the machine quickly.
 
