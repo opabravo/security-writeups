@@ -1,15 +1,17 @@
 # security-writeups
 
-- Some security research during the internship at GSS corp.
+- Some security traning during the internship at GSS corp.
 
 - Writeups of HTB(Hack The Box) machine/challenge in my spare time.
 
 - A script to renew THM(Try Hack Me) attacker machine automatically.
 
+- Try Hack Me Writeups, including some learning paths and rooms.
+
 ## Table of Contents
 
 | Topics                            | Description                                               |
-|-----------------------------------|-----------------------------------------------------------|
+| --------------------------------- | --------------------------------------------------------- |
 | [GSS Internship](#gss-internship) | Some security research during the internship at GSS corp. |
 | [Hack The Box](#hack-the-box)     | Hack The Box machine and challnge writeups/walkthroughs.  |
 | [Try Hack Me](#try-hack-me)       | Try Hack Me related notes and scripts.                    |
@@ -29,13 +31,6 @@
 
 Hack The Box is an online platform allowing you to test your penetration testing skills and exchange ideas and methodologies with other members of similar interests.
 
-### Goal
-
-I am doing a self-challenge:
-
-- 2 Machines a week
-- 3 challenges a week
-
 ### Password
 
 Active machine writeups/walkthroughs are encrypted with passwords, due to Hack The Box's rules.
@@ -53,6 +48,15 @@ Heard that the password might be in `$(cewl https://greybot.me)` though.
 ## Try Hack Me
 
 TryHackMe is an online platform to learn and practice ethical hacking.
+
+### Writeups
+
+> [Writeups](./thm/writeups)
+
+| Folder                                             | Description                                                                                                  |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [Learning Paths](./thm/writeups/Learning%20Paths/) | Learning Paths include: `Introduction to Defensive Security`, `JR. Penetration Tester`, `Offensive Security` |
+| [Rooms](./thm/writeups/Rooms)                      | Some practice and educational rooms other than learning paths                                                |
 
 ### Script
 
