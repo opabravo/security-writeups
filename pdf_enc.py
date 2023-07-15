@@ -29,10 +29,8 @@ def fetch_active_machines(token: str) -> list:
 
 
 def get_pdf_files(path: Path) -> Iterable[Path]:
-    """Get a list of PDF files in the directory"""
-    for f in path.iterdir():
-        if f.is_file() and f.suffix == ".pdf":
-            yield f
+    """Get a list of PDF files in the directory recrusively"""
+    return path.glob("**/*.pdf")
 
 
 def encrypt_pdf(pdf_file_path: Path, password: str) -> bool:
@@ -71,6 +69,16 @@ def decrypt_pdf(pdf_file_path : Path, password: str) -> bool:
         
     print(f"[+] Done decrypting | {pdf_file_path}")
     return True
+
+def adjust_pdf_file_name(path: Path):
+    """Remove Hack The Box Writeup prefix from pdf file names"""
+    pdf_files = get_pdf_files(path)
+    prefix = "HackTheBox Writeup - "
+    for pdf_file in pdf_files:
+        if pdf_file.name.startswith(prefix):
+            new_name = pdf_file.name.replace(prefix, "")
+            pdf_file.rename(pdf_file.parent / new_name)
+            print(f"[+] Renamed {pdf_file.name} to {new_name}")
         
 def main():
     """Main entry point to decrypt or encrypt PDF files"""
@@ -78,13 +86,17 @@ def main():
     PASSWORD = os.getenv("PDF_PASSWORD")
     
     active_machines = [m["name"].lower() for m in fetch_active_machines(TOKEN)]
-    machine_files = get_pdf_files(OUTPUT_MACHINE_PATH)
+    adjust_pdf_file_name(OUTPUT_MACHINE_PATH)
+    existed_machine_files = get_pdf_files(OUTPUT_MACHINE_PATH)
     
-    pdf_to_encrypt = [f for f in machine_files if f.name.split(".")[0].lower() in active_machines]
-    pdf_to_decrypt = [f for f in machine_files if f not in pdf_to_encrypt]
+    pdf_to_encrypt = [f for f in existed_machine_files if f.name.split(".")[0].lower() in active_machines]
+    pdf_to_decrypt = [f for f in existed_machine_files if f not in pdf_to_encrypt]
 
     print(f"[*] Active machines: {active_machines}")
     print(f"[*] PDF files to encrypt: {pdf_to_encrypt}")
+    print(f"[*] PDF files to decrypt: {pdf_to_decrypt}")
+    
+    print("---\n[*] Starting ...\n---")
     
     for pdf_file in pdf_to_encrypt:
         print(f"[*] Encrypting {pdf_file} ... | {PASSWORD}")

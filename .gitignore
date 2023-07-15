@@ -15,5 +15,5 @@ venv.bak/
 .idea/
 
 # Self define
-htb-unencrypted/
+htb-source/
 thm/*/sid.txt
