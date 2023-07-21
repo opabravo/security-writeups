@@ -89,7 +89,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "pypdf"
-version = "3.12.1"
+version = "3.12.2"
 description = "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files"
 category = "main"
 optional = false
@@ -133,7 +133,7 @@ use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "urllib3"
-version = "2.0.3"
+version = "2.0.4"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
 optional = false
@@ -324,8 +324,8 @@ pycryptodomex = [
     {file = "pycryptodomex-3.18.0.tar.gz", hash = "sha256:3e3ecb5fe979e7c1bb0027e518340acf7ee60415d79295e5251d13c68dde576e"},
 ]
 pypdf = [
-    {file = "pypdf-3.12.1-py3-none-any.whl", hash = "sha256:74aa287c83e9aad2ce4a3627458dad729e39b5deae52175fe9f97bfffdde41bc"},
-    {file = "pypdf-3.12.1.tar.gz", hash = "sha256:68bf9e089caaab356518410168df9ed90f0a6109e29adac168449d4054fa0094"},
+    {file = "pypdf-3.12.2-py3-none-any.whl", hash = "sha256:75c56b5e8ac8c61f6d8189d6bc839c1c2d1fe64626f4bab5d954e82c38652162"},
+    {file = "pypdf-3.12.2.tar.gz", hash = "sha256:8657d56fd4f64540b9a1e5285845543534321484f1276af893eead7bd00598e6"},
 ]
 python-dotenv = [
     {file = "python-dotenv-1.0.0.tar.gz", hash = "sha256:a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba"},
@@ -336,6 +336,6 @@ requests = [
     {file = "requests-2.31.0.tar.gz", hash = "sha256:942c5a758f98d790eaed1a29cb6eefc7ffb0d1cf7af05c3d2791656dbd6ad1e1"},
 ]
 urllib3 = [
-    {file = "urllib3-2.0.3-py3-none-any.whl", hash = "sha256:48e7fafa40319d358848e1bc6809b208340fafe2096f1725d05d67443d0483d1"},
-    {file = "urllib3-2.0.3.tar.gz", hash = "sha256:bee28b5e56addb8226c96f7f13ac28cb4c301dd5ea8a6ca179c0b9835e032825"},
+    {file = "urllib3-2.0.4-py3-none-any.whl", hash = "sha256:de7df1803967d2c2a98e4b11bb7d6bd9210474c46e8a0401514e3a42a75ebde4"},
+    {file = "urllib3-2.0.4.tar.gz", hash = "sha256:8d22f86aae8ef5e410d4f539fde9ce6b2113a001bb4d189e0aed70642d602b11"},
 ]
