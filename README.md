@@ -12,20 +12,17 @@
 
 | Topics                            | Description                                               |
 | --------------------------------- | --------------------------------------------------------- |
-| [GSS Internship](#gss-internship) | Some security research during the internship at GSS corp. |
+| [CTF](#ctf)                       | Capture The Flag event writeups                           |
 | [Hack The Box](#hack-the-box)     | Hack The Box machine and challnge writeups/walkthroughs.  |
 | [Try Hack Me](#try-hack-me)       | Try Hack Me related notes and scripts.                    |
+| [GSS Internship](#gss-internship) | Some security training and research during the internship at GSS corp. |
 
-## GSS Internship
+## CTF
 
-- [DVWA (Damn Vulnerable Web Application)](./gss/DVWA.md)
-- [Metasploit Practice](./gss/metasploit.md)
-- [WebAp Penetration Testing](./gss/WebAp-PT.md)
-- **Zimbra**
-  - [How To Setup Zimbra CTF](https://medium.com/@opabravo/frist-time-deploying-a-ctf-challenge-c13871d45970)
-  - [Zimbra CTF Writeup : Sneaky Way (Manually)](https://medium.com/@opabravo/zimbra-ctf-writeup-manually-6afe91be52a0)
-  - [Zimbra CTF 說明](./gss/Zimbra-CTF-Intro.pdf)
-  - [Zimbra CVE Reproduce](./gss/Zimbra.pdf)
+> [CTF](./ctf)
+
+Includes : `Hincon RE CTF`, `DUCTF`, `Patriot CTF`, `CSAW CTF`, `FAUST CTF`, `HackTheBoo`, `Fetch The Flag`
+
 
 ## Hack The Box
 
@@ -75,3 +72,14 @@ python3 thm.py
 ![THM Script](./img/thm_script.png)
 
 - `-D 1080` will open socks5 proxy for burp suite or proxychains to access labs, very useful!
+
+## GSS Internship
+
+- [DVWA (Damn Vulnerable Web Application)](./gss/DVWA.md)
+- [Metasploit Practice](./gss/metasploit.md)
+- [WebAp Penetration Testing](./gss/WebAp-PT.md)
+- **Zimbra**
+  - [How To Setup Zimbra CTF](https://medium.com/@opabravo/frist-time-deploying-a-ctf-challenge-c13871d45970)
+  - [Zimbra CTF Writeup : Sneaky Way (Manually)](https://medium.com/@opabravo/zimbra-ctf-writeup-manually-6afe91be52a0)
+  - [Zimbra CTF 說明](./gss/Zimbra-CTF-Intro.pdf)
+  - [Zimbra CVE Reproduce](./gss/Zimbra.pdf)
