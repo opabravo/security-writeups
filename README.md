@@ -21,7 +21,7 @@
 
 > [CTF](./ctf)
 
-Includes : `Hincon RE CTF`, `DUCTF`, `Patriot CTF`, `CSAW CTF`, `FAUST CTF`, `HackTheBoo`, `Fetch The Flag`
+Includes : `Hincon RE CTF`, `DUCTF`, `Patriot CTF`, `CSAW CTF`, `FAUST CTF`, `HackTheBoo`, `Fetch The Flag`, `Huntress CTF`
 
 
 ## Hack The Box
@@ -37,6 +37,8 @@ Heard that the password might be in `$(cewl https://greybot.me)` though.
 ### Machine Writeup/Walkthrough
 
 > [Machines](./htb/Machines)
+
+Includes : `50+` machines (Pending to setup blog)
 
 ### Challenges Writeup/Walkthrough
 
