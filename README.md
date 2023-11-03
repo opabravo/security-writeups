@@ -21,7 +21,7 @@
 
 > [CTF](./ctf)
 
-Includes : `Hincon RE CTF`, `DUCTF`, `Patriot CTF`, `CSAW CTF`, `FAUST CTF`, `HackTheBoo`, `Fetch The Flag`, `Huntress CTF`
+Includes : `Hitcon RE CTF`, `DUCTF`, `Patriot CTF`, `CSAW CTF`, `FAUST CTF`, `HackTheBoo`, `Fetch The Flag`, `Huntress CTF`
 
 
 ## Hack The Box
