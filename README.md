@@ -22,15 +22,15 @@ Hack The Box is an online platform allowing you to test your penetration testing
 
 ### Password
 
-Active machine writeups/walkthroughs are encrypted with passwords, due to Hack The Box's rules.
+Due to the TOS of Hack The Box,
 
-Heard that the password might be in `$(cewl https://greybot.me)` though.
+Active machine writeups/walkthroughs are encrypted with passwords (not in rockyou.txt)
 
 ### Machine Writeup/Walkthrough
 
 > [Machines](./htb/Machines)
 
-Includes : `50+` machines (Pending to setup blog)
+Includes : `50+` machines (Pending to setup a blog)
 
 ### Challenges Writeup/Walkthrough
 
