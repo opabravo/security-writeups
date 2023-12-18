@@ -1,13 +1,5 @@
 # security-writeups
 
-- Some security traning during the internship at GSS corp.
-
-- Writeups of HTB(Hack The Box) machine/challenge in my spare time.
-
-- A script to renew THM(Try Hack Me) attacker machine automatically.
-
-- Try Hack Me Writeups, including some learning paths and rooms.
-
 ## Table of Contents
 
 | Topics                            | Description                                               |
