@@ -1,5 +1,8 @@
 # security-writeups
 
+> [!IMPORTANT]
+> The newest writeups have been moved to https://opabravo.github.io/
+
 ## Table of Contents
 
 | Topics                            | Description                                               |
